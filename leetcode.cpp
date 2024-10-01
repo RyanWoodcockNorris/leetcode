@@ -540,4 +540,49 @@ int main()
      * MyCalendar* obj = new MyCalendar();
      * bool param_1 = obj->book(start,end);
      */
+     // Solution 2. Add Two Numbers
+    /**
+    * Definition for singly-linked list.
+    * struct ListNode {
+    *     int val;
+    *     ListNode *next;
+    *     ListNode() : val(0), next(nullptr) {}
+    *     ListNode(int x) : val(x), next(nullptr) {}
+    *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+    * };
+    */
+    class Solution {
+    public:
+        ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+            ListNode* dummyHead = new ListNode(0);
+            //used to create resultant list 3
+            ListNode* current = dummyHead;
+            int carry = 0;
+
+            //traverse both lists
+            while (l1 != nullptr || l2 != nullptr) {
+                //carryover can only occur given lists 1 & 2 digitspan overlap
+                int x = (l1 != nullptr) ? l1->val : 0;
+                int y = (l2 != nullptr) ? l2->val : 0;
+                int sum = carry + x + y;
+                //greater magnitude digit to carry over
+                carry = sum / 10;
+                //new elements of list 3 (result) created for sum of lesser digits
+                current->next = new ListNode(sum % 10);
+                current = current->next;
+
+                //iterate to next node
+                if (l1 != nullptr) l1 = l1->next;
+                if (l2 != nullptr) l2 = l2->next;
+            }
+
+            //given the result is of greater magnitude, create additional list 3 node
+            if (carry > 0) {
+                current->next = new ListNode(carry);
+            }
+
+            //return list 3
+            return dummyHead->next;
+        }
+    };
 }
