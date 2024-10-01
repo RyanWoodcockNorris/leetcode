@@ -585,4 +585,69 @@ int main()
             return dummyHead->next;
         }
     };
+    // Solution 705. Design HashSet
+    class MyHashSet {
+    private:
+        unordered_map<int, bool> map;
+    public:
+        MyHashSet() {
+        }
+
+        void add(int key) {
+            map[key] = true;
+        }
+
+        void remove(int key) {
+            //map[key] = false;
+            map.erase(key);
+        }
+
+        bool contains(int key) {
+            //if(map[key]){
+            //    return true;
+            //}
+            //return false;
+            return map.find(key) != map.end();
+        }
+    };
+
+    /**
+     * Your MyHashSet object will be instantiated and called as such:
+     * MyHashSet* obj = new MyHashSet();
+     * obj->add(key);
+     * obj->remove(key);
+     * bool param_3 = obj->contains(key);
+     */
+    // Solution 706. Design HashMap
+    class MyHashMap {
+    private:
+        unordered_map<int, int> hashmap;
+
+    public:
+        MyHashMap() {
+        }
+
+        void put(int key, int value) {
+            hashmap[key] = value;
+        }
+
+        int get(int key) {
+            if (hashmap.find(key) != hashmap.end()) {
+                return hashmap[key];
+            }
+            return -1;
+        }
+
+        void remove(int key) {
+            hashmap.erase(key);
+        }
+    };
+
+    /**
+     * Your MyHashMap object will be instantiated and called as such:
+     * MyHashMap* obj = new MyHashMap();
+     * obj->put(key,value);
+     * int param_2 = obj->get(key);
+     * obj->remove(key);
+     */
 }
