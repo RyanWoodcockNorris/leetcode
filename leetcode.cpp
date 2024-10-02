@@ -650,4 +650,49 @@ int main()
      * int param_2 = obj->get(key);
      * obj->remove(key);
      */
+    // Solution 3271. Hash Divided String (incomplete)
+    class Solution {
+private:
+    unordered_map<char, int> hashmap;
+public:
+    //initialise map
+    void initialisemap(){
+        for (char ch = 'a'; ch <= 'z'; ++ch) {
+            hashmap[ch] = ch - 'a';
+        }
+    }
+//    void initialisemap(){
+//        int index = 0;
+//        for (char ch = 'a'; ch <= 'z'; ++ch) {
+//            hashmap[ch] = index;
+//            index++;
+//        }
+//    }
+
+
+    string stringHash(string s, int k) {
+        if(hashmap.empty()){
+            initialisemap();
+        }
+        int sum = 0;
+        string result = "h";
+//        if(k == s.size()){
+//            for(char ch : s){
+//                sum += hashmap[ch];
+//            }
+//            result;
+//            result.append(1, hashmap[sum%26]);
+//            return result;
+//        }
+        string substring;
+        int splice = s.size()/k;
+        for(int j = 0; j < splice; j++){
+            for(int i = 0; i < k; i++){
+                substring[i] = s[i];
+            }
+            result.append(1, hashmap[sum%26]);
+        }
+        return result;  
+    }
+};
 }
