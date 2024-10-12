@@ -695,7 +695,7 @@ public:
         return result;  
     }
 };
-    // Solution 2980; Check if Bitwise OR Has Trailing Zeros
+    // Solution 2980. Check if Bitwise OR Has Trailing Zeros
     class Solution {
 public:
     bool hasTrailingZeros(vector<int>& nums) {
@@ -710,4 +710,26 @@ public:
         return false;
     }
 };
+    // Solution 242. Valid Anagram
+    class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        if(s.size() != t.size()){
+            return false;
+        }
+        unordered_map<char, int> letterss;
+        unordered_map<char, int> letterst;
+        for(int i = 0; i < s.size(); i++){
+            letterss[s[i]]++;
+            letterst[t[i]]++;
+        }
+        for(char c : s){
+            if(letterss[c]!=letterst[c]){
+                return false;
+            }
+        }
+        return true;
+    }
+};
+    // 
 }
